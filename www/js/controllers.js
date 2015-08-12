@@ -1,6 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
+  $scope.schedule = function(){
+    cordova.plugins.notification.local.schedule({
+           id: 1,
+           text: 'Test Message 1',
+           icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
+           sound: null,
+           data: { test: 1}
+         });
+  };
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
