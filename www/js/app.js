@@ -84,14 +84,3 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 });
 
-
- var id = 1, dialog;
-       schedule = function () {
-         cordova.plugins.notification.local.schedule({
-           id: 1,
-           text: 'Test Message 1',
-           icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
-           sound: null,
-           data: { test: id }
-         });
-       };

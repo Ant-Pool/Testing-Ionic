@@ -48,3 +48,7 @@ angular.module('starter.services', [])
     }
   };
 });
+
+// .factory('weatherState', function($http){
+  
+// });
