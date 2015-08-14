@@ -2,7 +2,18 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
   $scope.schedule = function(){
-    setTimeout($scope.notif, 60*1000);
+    //setTimeout($scope.notif, 60*1000);
+     $http.get('http://api.openweathermap.org/data/2.5/weather?q=Tel%20Aviv,il&units=metric').success(function(data, status, headers, config){
+             var weather =  "" + data.main.temp + " degrees. " + data.weather[0].description;
+             var now = new Date();
+    cordova.plugins.notification.local.schedule({
+           id: 1,
+           text: weather,
+           icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
+           sound: null,
+           data: { test: 1}
+         });
+           });
   };
   
   $scope.notif = function(){
@@ -12,8 +23,6 @@ angular.module('starter.controllers', [])
     cordova.plugins.notification.local.schedule({
            id: 1,
            text: weather,
-           firstAt: now,
-           every: "minute",
            icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
            sound: null,
            data: { test: 1}
