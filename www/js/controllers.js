@@ -6,6 +6,7 @@ angular.module('starter.controllers', [])
      $http.get('http://api.openweathermap.org/data/2.5/weather?q=Tel%20Aviv,il&units=metric').success(function(data, status, headers, config){
              var weather =  "" + data.main.temp + " degrees. " + data.weather[0].description;
              var now = new Date();
+             $scope.text = weather + " 1";
     cordova.plugins.notification.local.schedule({
            id: 1,
            text: weather,
@@ -13,9 +14,12 @@ angular.module('starter.controllers', [])
            sound: null,
            data: { test: 1}
          });
+         $scope.text = weather + " 2";
+           }).error(function(data){
+             $scope.text = "Error: " + data;
            });
   };
-  
+  $scope.text = "Nothing yet";
   $scope.notif = function(){
     $http.get('http://api.openweathermap.org/data/2.5/weather?q=Tel%20Aviv,il&units=metric').success(function(data, status, headers, config){
              var weather =  "" + data.main.temp + " degrees. " + data.weather[0].description;
