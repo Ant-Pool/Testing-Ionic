@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
   $scope.schedule = function(){
-    setTimeout(function(){
+    setInterval(function(){
       weatherNotific($scope, $http);
     }, 60*1000);
     
