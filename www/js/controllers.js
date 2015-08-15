@@ -2,9 +2,23 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
   $scope.schedule = function(){
-    setInterval(function(){
+    
+    document.addEventListener('deviceready', function () {
+    // cordova.plugins.backgroundMode is now available
+     // Android customization
+    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
+    cordova.plugins.backgroundMode.enable();
+    cordova.plugins.backgroundMode.onactivate = function() {
+      setInterval(function(){
       weatherNotific($scope, $http);
-    }, 60*1000);
+    }, 30*1000);
+    
+    };
+    cordova.plugins.backgroundMode.onfailure = function(errorCode) {
+      $scope.text = "" + errorCode;
+    };
+}, false);
+    
     
   };
   $scope.text = "Nothing yet";

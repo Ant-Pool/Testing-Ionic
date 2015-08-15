@@ -18,6 +18,6 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-  
+   <gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.6.3" />
    <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />
 </widget>
